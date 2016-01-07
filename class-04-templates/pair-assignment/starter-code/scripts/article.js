@@ -10,7 +10,13 @@ function Article (opts) {
 }
 
 Article.prototype.toHtml = function() {
-  // TODO: Use handlebars to render your articles.
+  var templateScript = $('#article-template').html();
+  var converter = Handlebars.compile(templateScript);
+  var dataSource = this;
+  var theCompiledHtml = converter(dataSource);
+  // $('#content').append(theCompiledHtml);
+
+  // DONE: Use handlebars to render your articles.
   //       - Get your template from the DOM.
   //       - Now "compile" your template with Handlebars.
 
@@ -20,6 +26,8 @@ Article.prototype.toHtml = function() {
   //   For example, you might want to display how old a post is, or say "(draft)" if it has no publication date:
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
   this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
+
+  return theCompiledHtml;
 
   // TODO: Use the function that Handlebars gave you to return your filled-in html template for THIS article.
 };
