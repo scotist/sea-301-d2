@@ -68,11 +68,10 @@ Article.fetchAll = function() {
       Article.loadAll(rawData);
       localStorage.rawData = JSON.stringify(rawData);
       articleView.initIndexPage();
-
-
     });
-    
+
     $.ajax({
+
       type: "HEAD",
       url: "/data/hackerIpsum.json",
       complete: function(rawData) {
@@ -80,5 +79,14 @@ Article.fetchAll = function() {
         localStorage.eTag = (rawData.getResponseHeader("eTag"));
       }
     });
+    $.ajax({
+      type: "HEAD",
+      url: "/data/ipsumArticles.json",
+      complete: function(rawData) {
+        console.log(rawData.getResponseHeader("eTag"));
+        localStorage.eTag = (rawData.getResponseHeader("eTag"));
+      }
+    });
+  
   }
 };
