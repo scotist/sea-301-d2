@@ -102,12 +102,15 @@ articleView.create = function() {
 
 articleView.initIndexPage = function() {
   Article.all.forEach(function(a){
-    $('#articles').append(a.toHtml())
+    $('#articles').append(a.toHtml());
   });
-
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
 };
+
+$.ajax('/data/hackerIpsum.json', function(){
+  console.log(xhr)
+});
