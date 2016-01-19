@@ -9,13 +9,19 @@
     $about.show().siblings().hide();
   };
 
-  // TODO: How do you want to render a single repo as html? Return your filled in HTML template.
+  // DONE: How do you want to render a single repo as html? Return your filled in HTML template.
   var render = function(repo) {
-
+    console.log("render?!?");
+    // repos.all.map(function(){
+      console.log('what is this?!');
+      return '<li>' + repo.name + ': ' + repo.url + '</li>';
+      // $('#yomama').append('<li>' + this.name + ': ' + this.url + '</li>');
+    // });
   };
 
   // DONE: If all the data is loaded, we can prep the UI and render the repos.
   repoView.index = function() {
+    console.log('what is up freak?');
     ui();
 
     // The jQuery `append` method lets us append an entire array of HTML elements at once,
